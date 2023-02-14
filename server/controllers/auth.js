@@ -21,9 +21,18 @@ export const register = async (req, res) => {
       password: hash,
     });
 
+    const token = jwt.sign(
+      {
+        id: newUser._id,
+      },
+      process.env.JWT_SECRET,
+      { expiresIn: "30d" }
+    );
+
     await newUser.save();
 
     res.json({
+      token,
       newUser,
       message: "Регистрация прошла успешно",
     });
@@ -73,11 +82,11 @@ export const login = async (req, res) => {
 
 export const getMe = async (req, res) => {
   try {
-    const user = await User.findById(req.UserId);
+    const user = await User.findById(req.userId);
 
     if (!user) {
       return res.json({
-        message: "Такого юзера не существует",
+        message: "Такого юзера не существует.",
       });
     }
 
@@ -94,6 +103,6 @@ export const getMe = async (req, res) => {
       token,
     });
   } catch (error) {
-    res.json({ message: "Нет доступа" });
+    res.json({ message: "Нет доступа." });
   }
 };
