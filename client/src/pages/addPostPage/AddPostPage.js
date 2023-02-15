@@ -42,7 +42,7 @@ export default function AddPostPage() {
           />
         </label>
         <div className="img-wrap">
-          {image && <img src={URL.createObjectURL(image)} alt="image" />}
+          {image && <img src={URL.createObjectURL(image)} alt={image.name} />}
         </div>
         <label className="title-label">
           Заголовок поста:
