@@ -31,13 +31,13 @@
 .username {
   font-size: 16px;
   color: rgb(56, 56, 55);
-  opacity: 0.5;
+  opacity: 0.8;
 }
 
 .data {
   font-size: 16px;
   color: rgb(56, 56, 55);
-  opacity: 0.5;
+  opacity: 0.8;
 }
 
 .post-title {
@@ -47,9 +47,13 @@
 
 .text-post {
   color: rgb(56, 56, 55);
-  opacity: 0.5;
+  opacity: 0.8;
   font-size: 16px;
   padding-top: 8px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
 }
 
 .icons-wrap {
@@ -65,7 +69,7 @@
   gap: 8px;
   color: rgb(56, 56, 55);
   font-size: 16px;
-  opacity: 0.5;
+  opacity: 0.8;
 }
 
 .coments {
@@ -75,7 +79,7 @@
   gap: 8px;
   color: rgb(56, 56, 55);
   font-size: 16px;
-  opacity: 0.5;
+  opacity: 0.8;
 }
 
 .no-posts {
