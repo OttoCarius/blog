@@ -1,7 +1,7 @@
 import React from "react";
 import "./styles.css";
 
-export function CommentItem({ cmt }) {
+export const CommentItem = ({ cmt }) => {
   const avatar = cmt.comment.trim().toUpperCase().split("").slice(0, 2);
   return (
     <div className="comment-page__container">
@@ -9,4 +9,4 @@ export function CommentItem({ cmt }) {
       <div className="comment-wrapper">{cmt.comment}</div>
     </div>
   );
-}
+};

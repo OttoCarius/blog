@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
-
 import { useSelector, useDispatch } from "react-redux";
 import axios from "../../utils/axios";
 import { removePost } from "../../redux/post/postSlice";

@@ -38,7 +38,7 @@ export const commentSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
-    // Создание постa
+    // Создание поста
     [createComment.pending]: (state) => {
       state.loading = true;
     },

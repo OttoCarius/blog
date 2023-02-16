@@ -2,17 +2,19 @@ import User from "../models/User.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
-//Regist user
+// Register user
 export const register = async (req, res) => {
   try {
     const { username, password } = req.body;
 
     const isUsed = await User.findOne({ username });
+
     if (isUsed) {
       return res.json({
-        message: "Данный username уже занят",
+        message: "Данный username уже занят.",
       });
     }
+
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(password, salt);
 
@@ -32,16 +34,16 @@ export const register = async (req, res) => {
     await newUser.save();
 
     res.json({
-      token,
       newUser,
-      message: "Регистрация прошла успешно",
+      token,
+      message: "Регистрация прошла успешно.",
     });
   } catch (error) {
-    res.json({ message: "Ошибка при создании пользователя" });
+    res.json({ message: "Ошибка при создании пользователя." });
   }
 };
 
-//Login user
+// Login user
 export const login = async (req, res) => {
   try {
     const { username, password } = req.body;
@@ -49,14 +51,15 @@ export const login = async (req, res) => {
 
     if (!user) {
       return res.json({
-        message: "Такого юзера не существует",
+        message: "Такого юзера не существует.",
       });
     }
 
     const isPasswordCorrect = await bcrypt.compare(password, user.password);
+
     if (!isPasswordCorrect) {
       return res.json({
-        message: "Неверный пароль",
+        message: "Неверный пароль.",
       });
     }
 
@@ -71,15 +74,14 @@ export const login = async (req, res) => {
     res.json({
       token,
       user,
-      message: "Вы вошли в систему",
+      message: "Вы вошли в систему.",
     });
   } catch (error) {
-    res.json({ message: "Ошибка при авторизации" });
+    res.json({ message: "Ошибка при авторизации." });
   }
 };
 
-//GetMe
-
+// Get Me
 export const getMe = async (req, res) => {
   try {
     const user = await User.findById(req.userId);

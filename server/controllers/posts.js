@@ -3,11 +3,12 @@ import User from "../models/User.js";
 import path, { dirname } from "path";
 import { fileURLToPath } from "url";
 
+// Create Post
 export const createPost = async (req, res) => {
   try {
     const { title, text } = req.body;
     const user = await User.findById(req.userId);
-    // Добавление поста c картинкой
+
     if (req.files) {
       let fileName = Date.now().toString() + req.files.image.name;
       const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -29,7 +30,6 @@ export const createPost = async (req, res) => {
       return res.json(newPostWithImage);
     }
 
-    // Добавление поста без картинки
     const newPostWithoutImage = new Post({
       username: user.username,
       title,
@@ -47,14 +47,16 @@ export const createPost = async (req, res) => {
   }
 };
 
+// Get All Posts
 export const getAll = async (req, res) => {
   try {
     const posts = await Post.find().sort("-createdAt");
     const popularPosts = await Post.find().limit(5).sort("-views");
 
     if (!posts) {
-      return res.json({ message: "Посто нет" });
+      return res.json({ message: "Постов нет" });
     }
+
     res.json({ posts, popularPosts });
   } catch (error) {
     res.json({ message: "Что-то пошло не так." });
@@ -73,7 +75,7 @@ export const getById = async (req, res) => {
   }
 };
 
-// Get My Posts
+// Get All Posts
 export const getMyPosts = async (req, res) => {
   try {
     const user = await User.findById(req.userId);
@@ -89,27 +91,23 @@ export const getMyPosts = async (req, res) => {
   }
 };
 
-//Remove Post
+// Remove post
 export const removePost = async (req, res) => {
   try {
     const post = await Post.findByIdAndDelete(req.params.id);
-
-    if (!post) {
-      return res.json({ message: "Такого поста не існує" });
-    }
+    if (!post) return res.json({ message: "Такого поста не существует" });
 
     await User.findByIdAndUpdate(req.userId, {
       $pull: { posts: req.params.id },
     });
 
-    res.json({ message: "Пост був видалений" });
+    res.json({ message: "Пост был удален." });
   } catch (error) {
     res.json({ message: "Что-то пошло не так." });
   }
 };
 
-//Update Post
-
+// Update post
 export const updatePost = async (req, res) => {
   try {
     const { title, text, id } = req.body;
