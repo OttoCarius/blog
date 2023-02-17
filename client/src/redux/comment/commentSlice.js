@@ -56,13 +56,16 @@ export const commentSlice = createSlice({
     // Получение комментов
     [getPostComments.pending]: (state) => {
       state.loading = true;
+      state.status = null;
     },
     [getPostComments.fulfilled]: (state, action) => {
       state.loading = false;
       state.comments = action.payload;
+      state.status = action.payload.message;
     },
-    [getPostComments.rejected]: (state) => {
+    [getPostComments.rejected]: (state, action) => {
       state.loading = false;
+      state.status = action.payload.message;
     },
   },
 });

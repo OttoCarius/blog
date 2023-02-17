@@ -24,6 +24,8 @@ export default function PostPage() {
 
   const { user } = useSelector((state) => state.auth);
   const { comments } = useSelector((state) => state.comment);
+  const { status } = useSelector((state) => state.comment);
+
   const navigate = useNavigate();
   const params = useParams();
   const dispatch = useDispatch();
@@ -42,7 +44,7 @@ export default function PostPage() {
     try {
       const postId = params.id;
       dispatch(createComment({ postId, comment }));
-      toast("Коментар не може бути порожнім");
+      // toast("Коментар не може бути порожнім");
       setComment("");
     } catch (error) {
       console.log(error);
@@ -69,6 +71,10 @@ export default function PostPage() {
   useEffect(() => {
     fetchComments();
   }, [fetchComments]);
+
+  useEffect(() => {
+    if (status) toast(status);
+  }, [status]);
 
   if (!post) {
     return <div className="no-posts">Постів немає</div>;
