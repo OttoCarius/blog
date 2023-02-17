@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import PostItem from "../../components/postItem/PostItem";
 import axios from "./../../utils/axios";
-import "./styles.css";
+import { PostPageContainer } from "./PostsPage.styled";
 
 export default function PostsPage() {
   const [posts, setPosts] = useState([]);
@@ -20,10 +20,10 @@ export default function PostsPage() {
   }, []);
 
   return (
-    <div className="posts-page__container">
+    <PostPageContainer>
       {posts?.map((post, index) => (
         <PostItem post={post} key={index} />
       ))}
-    </div>
+    </PostPageContainer>
   );
 }

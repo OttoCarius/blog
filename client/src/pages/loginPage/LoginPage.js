@@ -1,10 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { loginUser } from "../../redux/auth/authSlice";
 import { toast } from "react-toastify";
 import { checkIsAuth } from "../../redux/auth/authSlice";
-import "./styles.css";
+import {
+  LoginContainer,
+  LoginForm,
+  LoginTitle,
+  LoginLabel,
+  LoginInput,
+  PasswordLabel,
+  PasswordInput,
+  BtnWrap,
+  BtnLogin,
+  LinkRegister,
+} from "./LoginPage.styled";
 
 export default function LoginPage() {
   const [username, setUsername] = useState("");
@@ -32,37 +43,37 @@ export default function LoginPage() {
 
   return (
     <>
-      <div className="container">
-        <form onSubmit={(e) => e.preventDefault()} className="login-form">
-          <h1 className="login-title">Авторизація</h1>
-          <label className="login-label">
-            <input
+      <LoginContainer className="container">
+        <LoginForm onSubmit={(e) => e.preventDefault()}>
+          <LoginTitle className="login-title">Авторизація</LoginTitle>
+          <LoginLabel>
+            <LoginInput
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               placeholder="Логін"
-              className="login-input"
             />
-          </label>
-          <label className="password-label">
-            <input
+          </LoginLabel>
+          <PasswordLabel>
+            <PasswordInput
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Пароль"
-              className="password-input"
             />
-          </label>
-          <div className="button-wrap">
-            <button onClick={handleSubmit} type="submit" className="btn-login">
+          </PasswordLabel>
+          <BtnWrap>
+            <BtnLogin
+              onClick={handleSubmit}
+              type="submit"
+              className="btn-login"
+            >
               Увійти
-            </button>
-            <Link to="/register" className="register">
-              Немає облікового запису?
-            </Link>
-          </div>
-        </form>
-      </div>
+            </BtnLogin>
+            <LinkRegister to="/register">Немає облікового запису?</LinkRegister>
+          </BtnWrap>
+        </LoginForm>
+      </LoginContainer>
     </>
   );
 }

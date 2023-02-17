@@ -1,12 +1,12 @@
-/* .form {
+import styled from "styled-components";
+
+export const Form = styled.form`
   width: 33%;
   margin: 0 auto;
   padding: 50px 0;
-}
+`;
 
-
-
-.label-form {
+export const LabelForm = styled.label`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,24 +18,24 @@
   background-color: cadetblue;
   font-size: 16px;
   padding-top: 18px;
-}
+`;
 
-.file-input {
+export const FileInput = styled.input`
   visibility: hidden;
-}
+`;
 
-.img-wrap {
+export const ImgWraper = styled.div`
   object-fit: cover;
   padding: 8px 0;
-}
+`;
 
-.title-label {
+export const TitleLabel = styled.label`
   font-size: 20px;
   color: rgb(68, 65, 61);
   opacity: 70%;
-}
+`;
 
-.input-title {
+export const TitleInput = styled.input`
   margin-top: 4px;
   color: black;
   width: 100%;
@@ -46,15 +46,15 @@
   font-size: 16px;
   outline: none;
   margin-bottom: 10px;
-}
+`;
 
-.text-label {
+export const TextLabel = styled.label`
   font-size: 20px;
   color: rgb(68, 65, 61);
   opacity: 70%;
-}
+`;
 
-.input-text {
+export const TextInput = styled.textarea`
   margin-top: 4px;
   color: black;
   width: 100%;
@@ -67,17 +67,17 @@
 
   resize: none;
   height: 180px;
-}
+`;
 
-.btn-wrap {
+export const BtnWrapper = styled.div`
   display: flex;
   gap: 32px;
   align-items: center;
   justify-content: center;
   margin-top: 16px;
-}
+`;
 
-.add-btn {
+export const AddBtn = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -87,18 +87,17 @@
   color: antiquewhite;
   border-radius: 10px;
   padding: 4px 8px;
-}
 
-.add-btn:active {
-  position: relative;
-  top: 1px;
-}
+  &:active {
+    position: relative;
+    top: 1px;
+  }
+  &:hover {
+    opacity: 0.8;
+  }
+`;
 
-.add-btn:hover {
-  opacity: 0.8;
-}
-
-.cancel-btn {
+export const CancelBtn = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -108,13 +107,13 @@
   color: antiquewhite;
   border-radius: 10px;
   padding: 4px 8px;
-}
 
-.cancel-btn:active {
-  position: relative;
-  top: 1px;
-}
+  &:active {
+    position: relative;
+    top: 1px;
+  }
 
-.cancel-btn:hover {
-  opacity: 0.8;
-} */
+  &:hover {
+    opacity: 0.8;
+  }
+`;

@@ -1,35 +1,37 @@
-/* .container-posts {
+import styled from "styled-components";
+
+export const ContainerPost = styled.div`
   max-width: 900px;
   margin: 0 auto;
   padding: 40px 0;
-}
+`;
 
-.post-wrap {
+export const PostWrap = styled.div`
   display: flex;
   justify-content: space-between;
   gap: 32px;
-}
+`;
 
-.posts {
+export const Posts = styled.div`
   display: flex;
   flex-direction: column;
   gap: 40px;
   flex-basis: 80%;
-}
+`;
 
-.popular-wrap {
+export const PopularWrap = styled.div`
   flex-basis: 20%;
-}
+`;
 
-.popular-posts {
+export const PopularPost = styled.div`
   font-size: 16px;
   text-transform: uppercase;
   color: antiquewhite;
-}
+`;
 
-.no-posts {
+export const NoPosts = styled.div`
   font-size: 24px;
   text-align: center;
   color: antiquewhite;
   padding: 40px 0;
-} */
+`;

@@ -1,10 +1,12 @@
-/* .comment-page__container {
+import styled from "styled-components";
+
+export const Container = styled.div`
   display: flex;
   align-items: center;
   gap: 12px;
-}
+`;
 
-.avatar {
+export const Avatar = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -15,10 +17,10 @@
   background-color: aqua;
   color: antiquewhite;
   font-size: 14px;
-}
+`;
 
-.comment-wrapper {
+export const CommentWrap = styled.div`
   display: flex;
   color: antiquewhite;
   font-size: 10px;
-} */
+`;

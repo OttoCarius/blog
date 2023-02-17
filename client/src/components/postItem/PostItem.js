@@ -2,44 +2,58 @@ import React from "react";
 import { AiFillEye, AiOutlineMessage } from "react-icons/ai";
 import Moment from "react-moment";
 import { Link } from "react-router-dom";
-import "./styles.css";
+import {
+  PostItemContainer,
+  ImgWrap,
+  ImgWrapTWo,
+  Img,
+  UserWrap,
+  UserName,
+  Date,
+  PostTitle,
+  TextPost,
+  IconWrap,
+  ViewsBtn,
+  CommentsBtn,
+  NoPost,
+} from "./PostItem.styled";
+// import "./styles.css";
+
+//  {post?.imgUrl ? "image-wrap" : "image-wrap-two"}>
 
 export default function PostItem({ post }) {
   if (!post) {
-    return <div className="no-posts">Постів немає</div>;
+    return <NoPost>Постів немає</NoPost>;
   }
 
   return (
     <Link to={`/${post._id}`}>
-      <div className="post-item__container">
-        <div className={post?.imgUrl ? "image-wrap" : "image-wrap-two"}>
+      <PostItemContainer>
+        <ImgWrap>
+          {post?.imgUrl ? <ImgWrap /> : <ImgWrapTWo />}
           {post?.imgUrl && (
-            <img
-              src={`http://localhost:3002/${post.imgUrl}`}
-              alt="img"
-              className="img-post"
-            />
+            <Img src={`http://localhost:3002/${post.imgUrl}`} alt="img" />
           )}
-        </div>
-        <div className="user-wrap">
-          <div className="username">{post.username}</div>
-          <div className="data">
+        </ImgWrap>
+        <UserWrap>
+          <UserName>{post.username}</UserName>
+          <Date>
             <Moment date={post.createdAt} format="D MMM YYYY" />
-          </div>
-        </div>
-        <div className="post-title">{post.title}</div>
-        <p className="text-post">{post.text}</p>
-        <div className="icons-wrap">
-          <button className="views">
+          </Date>
+        </UserWrap>
+        <PostTitle>{post.title}</PostTitle>
+        <TextPost>{post.text}</TextPost>
+        <IconWrap>
+          <ViewsBtn>
             <AiFillEye />
             <span>{post.views}</span>
-          </button>
-          <button className="coments">
+          </ViewsBtn>
+          <CommentsBtn>
             <AiOutlineMessage />
             <span>{post.comments?.length || 0}</span>
-          </button>
-        </div>
-      </div>
+          </CommentsBtn>
+        </IconWrap>
+      </PostItemContainer>
     </Link>
   );
 }

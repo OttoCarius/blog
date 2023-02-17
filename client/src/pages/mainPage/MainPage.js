@@ -2,8 +2,15 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import PostItem from "../../components/postItem/PostItem";
 import PopularPosts from "../../components/popularPosts/PopularPosts";
-import "./styles.css";
 import { getAllPosts } from "../../redux/post/postSlice";
+import {
+  ContainerPost,
+  PostWrap,
+  Posts,
+  PopularWrap,
+  PopularPost,
+  NoPosts,
+} from "./MainPage.styled.js";
 
 export default function MainPage() {
   const dispatch = useDispatch();
@@ -14,27 +21,27 @@ export default function MainPage() {
   }, [dispatch]);
 
   if (!posts.length) {
-    return <div className="no-posts">Постів немає</div>;
+    return <NoPosts>Постів немає</NoPosts>;
   }
 
   return (
     <>
-      <div className="container-posts">
-        <div className="post-wrap">
-          <div className="posts">
+      <ContainerPost>
+        <PostWrap>
+          <Posts>
             {posts?.map((post, index) => (
               <PostItem key={index} post={post} />
             ))}
-          </div>
-          <div className="popular-wrap">
-            <div className="popular-posts">Популярні:</div>
+          </Posts>
+          <PopularWrap>
+            <PopularPost>Популярні:</PopularPost>
 
             {popularPosts?.map((post, index) => (
               <PopularPosts key={index} post={post} />
             ))}
-          </div>
-        </div>
-      </div>
+          </PopularWrap>
+        </PostWrap>
+      </ContainerPost>
     </>
   );
 }

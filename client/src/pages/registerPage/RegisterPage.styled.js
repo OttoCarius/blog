@@ -1,10 +1,13 @@
-/* .container {
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+
+export const RegisterContainer = styled.div`
   margin: 0 auto;
   padding: 0 15px;
   max-width: 1280px;
-}
+`;
 
-.login-form {
+export const RegisterForm = styled.form`
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -12,22 +15,22 @@
   height: 473px;
   width: 50%;
   margin-top: 140px;
-}
+`;
 
-.login-title {
+export const RegisterTitle = styled.h2`
   display: flex;
   justify-content: center;
   font-size: 28px;
   color: white;
   margin-bottom: 50px;
-}
+`;
 
-.login-label {
+export const RegisterLabel = styled.label`
   font-size: 24px;
   color: aliceblue;
-}
+`;
 
-.login-input {
+export const RegisterInput = styled.input`
   color: black;
   width: 380px;
   border-radius: 20px;
@@ -38,20 +41,22 @@
   font-size: 18px;
   outline: none;
   margin-bottom: 40px;
-}
 
-@media (max-width: 620px) {
-  .login-input {
+  /* ::placeholder {
+    text-align: center;
+  } */
+
+  @media (max-width: 620px) {
     width: 280px;
   }
-}
+`;
 
-.password-label {
+export const PasswordLabel = styled.label`
   font-size: 24px;
   color: aliceblue;
-}
+`;
 
-.password-input {
+export const PasswordInput = styled.input`
   color: black;
   width: 380px;
   border-radius: 20px;
@@ -61,47 +66,43 @@
   padding: 6px 10px;
   font-size: 18px;
   outline: none;
-}
 
-@media (max-width: 620px) {
-  .password-input {
+  @media (max-width: 620px) {
     width: 280px;
   }
-}
+`;
 
-.button-wrap {
+export const BtnWrap = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   margin-top: 40px;
-}
+`;
 
-.btn-login {
+export const BtnRegister = styled.button`
   border-radius: 20px;
   background-color: cadetblue;
   color: aliceblue;
   padding: 8px 12px;
   width: 260px;
   transition: opacity 0.2s ease-in;
-}
 
-.btn-login:active {
-  position: relative;
-  top: 1px;
-}
+  &:active {
+    position: relative;
+    top: 1px;
+  }
 
-.btn-login:hover {
-  opacity: 0.8;
-}
+  &:hover {
+    opacity: 0.8;
+  }
 
-@media (max-width: 620px) {
-  .btn-login {
+  @media (max-width: 620px) {
     width: 200px;
   }
-}
+`;
 
-.register {
+export const LinkLogin = styled(Link)`
   margin-top: 16px;
   color: rgba(38, 137, 236, 0.932);
-} */
+`;

@@ -2,7 +2,19 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createPost } from "../../redux/post/postSlice";
 import { useNavigate } from "react-router-dom";
-import "./styles.css";
+import {
+  Form,
+  LabelForm,
+  FileInput,
+  ImgWraper,
+  TitleLabel,
+  TitleInput,
+  TextLabel,
+  TextInput,
+  BtnWrapper,
+  AddBtn,
+  CancelBtn,
+} from "./AddPostPage.styled";
 
 export default function AddPostPage() {
   const [title, setTitle] = useState("");
@@ -32,44 +44,34 @@ export default function AddPostPage() {
 
   return (
     <>
-      <form className="form" onSubmit={(e) => e.preventDefault()}>
-        <label className="label-form">
+      <Form onSubmit={(e) => e.preventDefault()}>
+        <LabelForm>
           Додати фото:
-          <input
+          <FileInput
             type="file"
             onChange={(e) => setImage(e.target.files[0])}
-            className="file-input"
           />
-        </label>
-        <div className="img-wrap">
+        </LabelForm>
+        <ImgWraper>
           {image && <img src={URL.createObjectURL(image)} alt={image.name} />}
-        </div>
-        <label className="title-label">
+        </ImgWraper>
+        <TitleLabel>
           Заголовок поста:
-          <input
+          <TitleInput
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="input-title"
           />
-        </label>
-        <label className="text-label">
+        </TitleLabel>
+        <TextLabel>
           Текст поста:
-          <textarea
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-            className="input-text"
-          />
-        </label>
-        <div className="btn-wrap">
-          <button onClick={submitHandler} className="add-btn">
-            Додати
-          </button>
-          <button onClick={clearForm} className="cancel-btn">
-            Відмінити
-          </button>
-        </div>
-      </form>
+          <TextInput value={text} onChange={(e) => setText(e.target.value)} />
+        </TextLabel>
+        <BtnWrapper>
+          <AddBtn onClick={submitHandler}>Додати</AddBtn>
+          <CancelBtn onClick={clearForm}>Відмінити</CancelBtn>
+        </BtnWrapper>
+      </Form>
     </>
   );
 }

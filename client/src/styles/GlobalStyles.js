@@ -1,5 +1,6 @@
-@import "./reset.css";
-@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+import { createGlobalStyle } from "styled-components";
+
+const GlobalStyles = createGlobalStyle`
 
 body {
   font-family: "Poppins", sans-serif;
@@ -21,9 +22,6 @@ body {
   background: linear-gradient(90deg, #000000, #000000, #33beff);
 }
 
-/* .App {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+`;
 
-} */
+export default GlobalStyles;

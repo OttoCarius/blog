@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "../../utils/axios";
 import { removePost } from "../../redux/post/postSlice";
@@ -16,6 +16,32 @@ import {
 } from "react-icons/ai";
 import Moment from "react-moment";
 import { toast } from "react-toastify";
+import {
+  ContainerPostPage,
+  PostPageBtn,
+  PostPageLink,
+  PostPageContainer,
+  PostPageWrap,
+  PostPageImgWrap,
+  ImgWrap2,
+  ImgWrapTwo2,
+  ImgPost,
+  UserWrap,
+  UserName,
+  Data,
+  PostTitle,
+  TextPost,
+  IconsWrap,
+  BtnEdit,
+  BtnDelet,
+  Icons,
+  EditLink,
+  PostPageComments,
+  CommentForm,
+  CommentInput,
+  BtnComments,
+  NoPosts,
+} from "./PostPage.styled";
 import "./styles.css";
 
 export default function PostPage() {
@@ -77,38 +103,36 @@ export default function PostPage() {
   }, [status]);
 
   if (!post) {
-    return <div className="no-posts">Постів немає</div>;
+    return <NoPosts>Постів немає</NoPosts>;
   }
 
   return (
-    <div>
-      <button className="post-page__button">
-        <Link className="post-page__link" to={"/"}>
-          Назад
-        </Link>
-      </button>
-      <div className="post-page__container">
-        <div className="post-page__wrap">
-          <div className="post-page__img-wrap">
-            <div className={post?.imgUrl ? "image-wrap2" : "image-wrap-two2"}>
+    <ContainerPostPage>
+      <PostPageBtn>
+        <PostPageLink to={"/"}>Назад</PostPageLink>
+      </PostPageBtn>
+      <PostPageContainer>
+        <PostPageWrap>
+          <PostPageImgWrap>
+            <ImgWrap2>
+              {post?.imgUrl ? <ImgWrap2 /> : <ImgWrapTwo2 />}
               {post?.imgUrl && (
-                <img
+                <ImgPost
                   src={`http://localhost:3002/${post.imgUrl}`}
                   alt="img"
-                  className="img-post"
                 />
               )}
-            </div>
-            <div className="user-wrap">
-              <div className="username">{post.username}</div>
-              <div className="data">
+            </ImgWrap2>
+            <UserWrap>
+              <UserName>{post.username}</UserName>
+              <Data>
                 <Moment date={post.createdAt} format="D MMM YYYY" />
-              </div>
-            </div>
-            <div className="post-title">{post.title}</div>
-            <p className="text-posts">{post.text}</p>
-            <div className="icons-wrap">
-              <div className="icons">
+              </Data>
+            </UserWrap>
+            <PostTitle>{post.title}</PostTitle>
+            <TextPost>{post.text}</TextPost>
+            <IconsWrap>
+              <Icons>
                 <button className="views">
                   <AiFillEye />
                   <span>{post.views}</span>
@@ -117,44 +141,39 @@ export default function PostPage() {
                   <AiOutlineMessage />
                   <span>{post.comments?.length || 0} </span>
                 </button>
-              </div>
+              </Icons>
               {user?._id === post.author && (
-                <div className="icons">
-                  <button className="edit">
-                    <Link to={`/${params.id}/edit`}>
+                <Icons>
+                  <BtnEdit>
+                    <EditLink to={`/${params.id}/edit`}>
                       <AiFillEdit />
-                    </Link>
-                  </button>
-                  <button onClick={removePostHandler} className="delete">
+                    </EditLink>
+                  </BtnEdit>
+                  <BtnDelet onClick={removePostHandler}>
                     <AiOutlineDelete />
-                  </button>
-                </div>
+                  </BtnDelet>
+                </Icons>
               )}
-            </div>
-          </div>
-        </div>
-        <div className="post-page__comments">
-          <form onSubmit={(e) => e.preventDefault()} className="comment-form">
-            <input
+            </IconsWrap>
+          </PostPageImgWrap>
+        </PostPageWrap>
+        <PostPageComments>
+          <CommentForm onSubmit={(e) => e.preventDefault()}>
+            <CommentInput
               type="text"
               value={comment}
               onChange={(e) => setComment(e.target.value)}
               placeholder="Коментар"
-              className="comment-input"
             />
-            <button
-              type="submit"
-              onClick={handleSubmit}
-              className="comment-btn"
-            >
+            <BtnComments type="submit" onClick={handleSubmit}>
               Надіслати
-            </button>
-          </form>
+            </BtnComments>
+          </CommentForm>
           {comments?.map((cmt, index) => (
             <CommentItem key={(cmt._id, index)} cmt={cmt} />
           ))}
-        </div>
-      </div>
-    </div>
+        </PostPageComments>
+      </PostPageContainer>
+    </ContainerPostPage>
   );
 }

@@ -1,9 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import "./styles.css";
 import { registerUser } from "../../redux/auth/authSlice";
 import { toast } from "react-toastify";
+import {
+  RegisterContainer,
+  RegisterForm,
+  RegisterTitle,
+  RegisterLabel,
+  RegisterInput,
+  PasswordLabel,
+  PasswordInput,
+  BtnWrap,
+  BtnRegister,
+  LinkLogin,
+} from "./RegisterPage.styled.js";
 
 export default function RegisterPage() {
   const [username, setUsername] = useState("");
@@ -29,41 +39,35 @@ export default function RegisterPage() {
 
   return (
     <>
-      <div className="container">
-        <form onSubmit={(e) => e.preventDefault()} className="login-form">
-          <h1 className="register-title">Реєстрація</h1>
-          <label className="register-label">
-            <input
+      <RegisterContainer>
+        <RegisterForm onSubmit={(e) => e.preventDefault()}>
+          <RegisterTitle className="register-title">Реєстрація</RegisterTitle>
+          <RegisterLabel>
+            <RegisterInput
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               placeholder="Логін"
-              className="register-input"
             />
-          </label>
-          <label className="password-label">
-            <input
+          </RegisterLabel>
+          <PasswordLabel>
+            <PasswordInput
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Пароль"
-              className="password-input"
             />
-          </label>
-          <div className="button-wrap">
-            <button
-              type="submit"
-              onClick={handleSubmit}
-              className="btn-register"
-            >
+          </PasswordLabel>
+          <BtnWrap>
+            <BtnRegister type="submit" onClick={handleSubmit}>
               Підтвердити
-            </button>
-            <Link to="/login" className="register">
+            </BtnRegister>
+            <LinkLogin to="/login" className="register">
               Вже зареєстровані?
-            </Link>
-          </div>
-        </form>
-      </div>
+            </LinkLogin>
+          </BtnWrap>
+        </RegisterForm>
+      </RegisterContainer>
     </>
   );
 }
