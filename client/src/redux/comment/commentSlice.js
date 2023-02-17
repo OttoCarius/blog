@@ -4,6 +4,7 @@ import axios from "../../utils/axios";
 const initialState = {
   comments: [],
   loading: false,
+  status: null,
 };
 
 export const createComment = createAsyncThunk(
@@ -38,16 +39,19 @@ export const commentSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
-    // Создание поста
+    // Создание комента
     [createComment.pending]: (state) => {
       state.loading = true;
+      state.status = null;
     },
     [createComment.fulfilled]: (state, action) => {
       state.loading = false;
       state.comments.push(action.payload);
+      state.status = action.payload.message;
     },
-    [createComment.rejected]: (state) => {
+    [createComment.rejected]: (state, action) => {
       state.loading = false;
+      state.status = action.payload.message;
     },
     // Получение комментов
     [getPostComments.pending]: (state) => {

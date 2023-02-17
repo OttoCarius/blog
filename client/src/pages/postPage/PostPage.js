@@ -31,7 +31,7 @@ export default function PostPage() {
   const removePostHandler = () => {
     try {
       dispatch(removePost(params.id));
-      toast("Пост был удален");
+      toast("Пост був видалений");
       navigate("/posts");
     } catch (error) {
       console.log(error);
@@ -42,6 +42,7 @@ export default function PostPage() {
     try {
       const postId = params.id;
       dispatch(createComment({ postId, comment }));
+      toast("Коментар не може бути порожнім");
       setComment("");
     } catch (error) {
       console.log(error);
@@ -143,9 +144,8 @@ export default function PostPage() {
               Надіслати
             </button>
           </form>
-
-          {comments?.map((cmt) => (
-            <CommentItem key={cmt._id} cmt={cmt} />
+          {comments?.map((cmt, index) => (
+            <CommentItem key={(cmt._id, index)} cmt={cmt} />
           ))}
         </div>
       </div>

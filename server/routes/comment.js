@@ -6,6 +6,6 @@ const router = new Router();
 
 // Create Comment
 // http://localhost:3002/api/comments/:id
-router.post("/:id", checkAuth, createComment);
+router.post("/:id", createComment);
 
 export default router;
