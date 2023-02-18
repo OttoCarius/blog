@@ -9,7 +9,7 @@ const router = new Router();
 router.post("/register", register);
 
 // Login
-// http://localhost:3002/api/auth/login
+
 router.post("/login", login);
 
 // Get Me
