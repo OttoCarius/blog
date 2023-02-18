@@ -30,7 +30,7 @@ export const Posts = styled.div`
   display: flex;
   flex-direction: column;
   gap: 30px;
-  flex-basis: 70%;
+  flex-basis: 60%;
 
   @media (max-width: 1000px) {
     flex-basis: 50%;
@@ -39,6 +39,10 @@ export const Posts = styled.div`
 
 export const PopularWrap = styled.div`
   flex-basis: 20%;
+
+  @media (max-width: 673px) {
+    flex-basis: 10%;
+  }
 `;
 
 export const PopularPost = styled.div`

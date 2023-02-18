@@ -14,9 +14,17 @@ export const LinkList = styled(Link)`
   padding: 8px;
   cursor: pointer;
 
+  @media (max-width: 480px) {
+    font-size: 12px;
+  }
+
   &:hover {
     background-color: rgb(37, 76, 148);
     color: white;
     font-size: 18px;
+
+    @media (max-width: 480px) {
+      font-size: 14px;
+    }
   }
 `;

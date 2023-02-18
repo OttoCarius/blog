@@ -40,6 +40,7 @@ export const Img = styled.img`
 export const UserWrap = styled.div`
   display: flex;
   justify-content: space-between;
+  justify-items: center;
   align-items: center;
   padding-top: 8px;
 `;
@@ -56,7 +57,7 @@ export const UserName = styled.div`
   }
 
   @media (max-width: 673px) {
-    font-size: 14px;
+    font-size: 10px;
   }
 `;
 
@@ -69,6 +70,11 @@ export const Date = styled.div`
   @media (max-width: 673px) {
     font-size: 14px;
   }
+
+  @media (max-width: 480px) {
+    font-size: 10px;
+    margin-top: 5px;
+  }
 `;
 
 export const PostTitle = styled.div`
@@ -78,6 +84,10 @@ export const PostTitle = styled.div`
 
   @media (max-width: 673px) {
     font-size: 18px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 14px;
   }
 `;
 
@@ -94,6 +104,10 @@ export const TextPost = styled.p`
 
   @media (max-width: 673px) {
     font-size: 14px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 12px;
   }
 `;
 

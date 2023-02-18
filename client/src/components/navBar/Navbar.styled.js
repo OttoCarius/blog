@@ -8,7 +8,7 @@ export const Nav = styled.nav`
 
 export const Container = styled.div`
   margin: 0 auto;
-  padding: 0 15px;
+  padding: 0 25px;
   max-width: 1280px;
 
   @media (max-width: 400px) {

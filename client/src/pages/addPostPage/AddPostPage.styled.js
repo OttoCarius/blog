@@ -1,9 +1,17 @@
 import styled from "styled-components";
 
 export const Form = styled.form`
-  width: 33%;
+  width: 400px;
   margin: 0 auto;
   padding: 50px 0;
+
+  @media (max-width: 670px) {
+    width: 300px;
+  }
+
+  @media (max-width: 400px) {
+    width: 200px;
+  }
 `;
 
 export const LabelForm = styled.label`
@@ -14,8 +22,9 @@ export const LabelForm = styled.label`
   border-width: 2px;
   border-style: dotted;
   cursor: pointer;
-  color: blanchedalmond;
-  background-color: cadetblue;
+  color: antiquewhite;
+  background: linear-gradient(90deg, #33beff, #000000, #33beff);
+  background: -webkit-linear-gradient(90deg, #000000, #000000, #33beff);
   font-size: 16px;
   padding-top: 18px;
 `;
@@ -31,7 +40,7 @@ export const ImgWraper = styled.div`
 
 export const TitleLabel = styled.label`
   font-size: 20px;
-  color: rgb(68, 65, 61);
+  color: antiquewhite;
   opacity: 70%;
 `;
 
@@ -50,7 +59,7 @@ export const TitleInput = styled.input`
 
 export const TextLabel = styled.label`
   font-size: 20px;
-  color: rgb(68, 65, 61);
+  color: antiquewhite;
   opacity: 70%;
 `;
 
@@ -82,7 +91,7 @@ export const AddBtn = styled.button`
   justify-content: center;
   align-items: center;
   width: 120px;
-  background-color: rgb(42, 179, 87);
+  background-color: #1a9900;
   font-size: 16px;
   color: antiquewhite;
   border-radius: 10px;
@@ -102,7 +111,7 @@ export const CancelBtn = styled.button`
   justify-content: center;
   align-items: center;
   width: 120px;
-  background-color: rgb(161, 59, 102);
+  background-color: #ff1919;
   font-size: 16px;
   color: antiquewhite;
   border-radius: 10px;
