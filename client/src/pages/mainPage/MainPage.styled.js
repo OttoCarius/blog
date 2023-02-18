@@ -1,9 +1,23 @@
 import styled from "styled-components";
 
 export const ContainerPost = styled.div`
-  max-width: 900px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 40px 0;
+  padding: 40px 20px;
+
+  @media (max-width: 1000px) {
+    max-width: 960px;
+  }
+
+  @media (max-width: 673px) {
+    max-width: 600px;
+    padding: 30px 20px;
+  }
+
+  @media (max-width: 466px) {
+    max-width: 460px;
+    padding: 10px 20px;
+  }
 `;
 
 export const PostWrap = styled.div`
@@ -15,8 +29,12 @@ export const PostWrap = styled.div`
 export const Posts = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 40px;
-  flex-basis: 80%;
+  gap: 30px;
+  flex-basis: 70%;
+
+  @media (max-width: 1000px) {
+    flex-basis: 50%;
+  }
 `;
 
 export const PopularWrap = styled.div`

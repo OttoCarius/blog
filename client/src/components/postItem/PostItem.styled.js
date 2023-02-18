@@ -3,14 +3,20 @@ import styled from "styled-components";
 export const PostItemContainer = styled.div`
   display: flex;
   flex-direction: column;
-  flex-basis: 25%;
+  flex-basis: 45%;
   flex-grow: 1;
 `;
 
 export const ImgWrap = styled.div`
   display: flex;
   border-radius: 4px;
-  height: 380px;
+
+  /* @media (max-width: 670px) {
+    height: 380px;
+  }
+  @media (max-width: 480px) {
+    height: 220px;
+  } */
 `;
 
 export const ImgWrapTWo = styled.div`
@@ -19,8 +25,16 @@ export const ImgWrapTWo = styled.div`
 `;
 
 export const Img = styled.img`
-  object-fit: cover;
+  object-fit: contain;
   width: 100%;
+
+  @media (max-width: 1000px) {
+    object-fit: contain;
+  }
+
+  @media (max-width: 600px) {
+    object-fit: contain;
+  }
 `;
 
 export const UserWrap = styled.div`
@@ -31,24 +45,44 @@ export const UserWrap = styled.div`
 `;
 
 export const UserName = styled.div`
-  font-size: 16px;
-  color: rgb(56, 56, 55);
+  font-size: 20px;
+  color: antiquewhite;
   opacity: 0.8;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  @media (max-width: 900px) {
+    font-size: 16px;
+  }
+
+  @media (max-width: 673px) {
+    font-size: 14px;
+  }
 `;
 
 export const Date = styled.div`
+  margin-top: 10px;
   font-size: 16px;
-  color: rgb(56, 56, 55);
+  color: antiquewhite;
   opacity: 0.8;
+
+  @media (max-width: 673px) {
+    font-size: 14px;
+  }
 `;
 
 export const PostTitle = styled.div`
-  color: rgb(56, 56, 55);
+  color: antiquewhite;
   font-size: 24px;
+  margin-bottom: 10px;
+
+  @media (max-width: 673px) {
+    font-size: 18px;
+  }
 `;
 
 export const TextPost = styled.p`
-  color: rgb(56, 56, 55);
+  color: antiquewhite;
   opacity: 0.8;
   font-size: 16px;
   padding-top: 8px;
@@ -56,6 +90,11 @@ export const TextPost = styled.p`
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 4;
+  margin-bottom: 15px;
+
+  @media (max-width: 673px) {
+    font-size: 14px;
+  }
 `;
 
 export const IconWrap = styled.div`
@@ -69,9 +108,9 @@ export const ViewsBtn = styled.button`
   align-items: center;
   justify-content: center;
   gap: 8px;
-  color: rgb(56, 56, 55);
-  font-size: 16px;
+  color: antiquewhite;
   opacity: 0.8;
+  font-size: 16px;
 `;
 
 export const CommentsBtn = styled.button`
@@ -79,9 +118,9 @@ export const CommentsBtn = styled.button`
   align-items: center;
   justify-content: center;
   gap: 8px;
-  color: rgb(56, 56, 55);
-  font-size: 16px;
+  color: antiquewhite;
   opacity: 0.8;
+  font-size: 16px;
 `;
 
 export const NoPost = styled.div`
