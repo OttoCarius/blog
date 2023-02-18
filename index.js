@@ -29,10 +29,15 @@ app.use("/api/comments", commentRoute);
 
 async function start() {
   try {
-    await mongoose.set("strictQuery", true);
     mongoose.connect(
-      `mongodb+srv://${DB_USER}:${DB_PASSWORD}@cluster0.07xhxzd.mongodb.net/${DB_NAME}?retryWrites=true&w=majority`
+      `mongodb+srv://${DB_USER}:${DB_PASSWORD}@cluster0.07xhxzd.mongodb.net/${DB_NAME}?retryWrites=true&w=majority` +
+        {
+          useNewUrlParsel: true,
+          useUnifiedTopology: true,
+          useCreateIndex: true,
+        }
     );
+    mongoose.set("useFindAndModify", true);
     app.listen(PORT, () => console.log(`Server started on port: ${PORT}`));
   } catch (error) {
     console.log(error);
