@@ -22,7 +22,6 @@ app.use(express.json({ extended: true }));
 app.use(express.static("uploads"));
 
 // Routes
-// http://localhost:3002
 app.use("/api/auth", authRoute);
 app.use("/api/posts", postRoute);
 app.use("/api/comments", commentRoute);
