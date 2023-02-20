@@ -18,7 +18,7 @@ const DB_NAME = process.env.DB_NAME;
 // Middleware
 app.use(cors());
 app.use(fileUpload());
-app.use(express.json()); //{ extended: true }//
+app.use(express.json({ extended: true }));
 app.use(express.static("uploads"));
 
 // Routes
