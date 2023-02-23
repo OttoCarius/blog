@@ -8,13 +8,17 @@ import {
   updatePost,
   getPostComments,
 } from "../controllers/posts.js";
+import uploadCloud from "../middleware/uploadMiddleware.js";
 import { checkAuth } from "../utils/checkAuth.js";
 
 const router = new Router();
 
 // Create Post
 // http://localhost:3002/api/posts
-router.post("/", checkAuth, createPost);
+
+// router.post("/", checkAuth, createPost);
+
+router.post("/", uploadCloud.single("image"), checkAuth, createPost);
 
 // Get All Posts
 // http://localhost:3002/api/posts

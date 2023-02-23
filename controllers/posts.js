@@ -10,16 +10,16 @@ export const createPost = async (req, res) => {
     const { title, text } = req.body;
     const user = await User.findById(req.userId);
 
-    if (req.files) {
-      let fileName = Date.now().toString() + req.files.image.name;
-      const __dirname = dirname(fileURLToPath(import.meta.url));
-      req.files.image.mv(path.join(__dirname, "..", "uploads", fileName));
+    if (req.file) {
+      // let fileName = Date.now().toString() + req.files.image.name;
+      // const __dirname = dirname(fileURLToPath(import.meta.url));
+      // req.files.image.mv(path.join(__dirname, "..", "uploads", fileName));
 
       const newPostWithImage = new Post({
         username: user.username,
         title,
         text,
-        imgUrl: fileName,
+        imgUrl: req.file.path,
         author: req.userId,
       });
 
@@ -44,7 +44,8 @@ export const createPost = async (req, res) => {
     });
     res.json(newPostWithoutImage);
   } catch (error) {
-    res.json({ message: "Что-то пошло не так." });
+    console.log(error);
+    res.json({ message: error.mesage });
   }
 };
 
