@@ -22,7 +22,7 @@ router.post("/", uploadCloud.single("image"), checkAuth, createPost);
 
 // Get All Posts
 // http://localhost:3002/api/posts
-router.get("/", uploadCloud.single("image"), getAll);
+router.get("/", getAll);
 
 // Get Post By Id
 // http://localhost:3002/api/posts/:id

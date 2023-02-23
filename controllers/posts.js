@@ -116,10 +116,10 @@ export const updatePost = async (req, res) => {
     const post = await Post.findById(id);
 
     if (req.files) {
-      let fileName = Date.now().toString() + req.files.image.name;
-      const __dirname = dirname(fileURLToPath(import.meta.url));
-      req.files.image.mv(path.join(__dirname, "..", "uploads", fileName));
-      post.imgUrl = fileName || "";
+      // let fileName = Date.now().toString() + req.files.image.name;
+      // const __dirname = dirname(fileURLToPath(import.meta.url));
+      // req.files.image.mv(path.join(__dirname, "..", "uploads", fileName));
+      post.imgUrl = req.file.path || "";
     }
 
     post.title = title;
